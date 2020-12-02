@@ -6,7 +6,7 @@
 
 ### To get the days results:
 
-`npm run`
+`npm start`
 
 # Solutions
 
