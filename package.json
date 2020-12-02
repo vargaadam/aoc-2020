@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "run": "node index", 
+    "start": "DAY=$npm_config_day node src/index", 
     "test": "mocha **/*.test.js"
   },
   "author": "Adam Varga",
