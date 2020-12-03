@@ -2,20 +2,32 @@ const { expect } = require("chai");
 
 const { p1, p2 } = require(".");
 
-const input = [];
+const input = [
+  "..##.......",
+  "#...#...#..",
+  ".#....#..#.",
+  "..#.#...#.#",
+  ".#...##..#.",
+  "..#.##.....",
+  ".#.#.#....#",
+  ".#........#",
+  "#.##...#...",
+  "#...##....#",
+  ".#..#...#.#",
+];
 
-describe("Day2", () => {
+describe("Day3", () => {
   describe("Part One", () => {
-    it("", () => {
+    it("should return with 7", () => {
       const result = p1(input);
-      expect(result).eql(0);
+      expect(result).eql(7);
     });
   });
 
   describe("Part Two", () => {
-    it("", () => {
+    it("should return with 336", () => {
       const result = p2(input);
-      expect(result).to.eql(0);
+      expect(result).to.eql(336);
     });
   });
 });
