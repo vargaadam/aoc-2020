@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "DAY=$npm_config_day node src/index", 
-    "test": "mocha **/*.test.js"
+    "test": "mocha **/*.test.js",
+    "test:watch": "mocha **/*.test.js --watch"
   },
   "author": "Adam Varga",
   "license": "ISC",
