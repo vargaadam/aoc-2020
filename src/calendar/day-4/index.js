@@ -1,42 +1,26 @@
-const validatorts = require("./validators");
+const passportValidator = require("./validator");
 
 const p1 = (input) => {
   const passports = _getPassports(input);
 
-  const count = _validatePassportKeys(passports, (key) => {
-    return Object.keys(validatorts).includes(key);
+  const validPassports = passportValidator(passports, (key, _, validators) => {
+    return Object.keys(validators).includes(key);
   });
 
-  return count;
+  return validPassports.length;
 };
 
 const p2 = (input) => {
   const passports = _getPassports(input);
 
-  const count = _validatePassportKeys(passports, (key, value) => {
-    return Object.keys(validatorts).includes(key) && validatorts[key](value);
-  });
+  const validPassports = passportValidator(
+    passports,
+    (key, value, validators) => {
+      return Object.keys(validators).includes(key) && validators[key](value);
+    }
+  );
 
-  return count;
-};
-
-const _validatePassportKeys = (passports, validate) => {
-  return passports.filter((passport) => {
-    const fields = passport.split(" ");
-    let included = 0;
-
-    fields.forEach((field) => {
-      const [key, value] = field.split(":");
-
-      const isValid = validate(key, value);
-
-      if (isValid) {
-        included++;
-      }
-    });
-
-    return included === Object.keys(validatorts).length;
-  }).length;
+  return validPassports.length;
 };
 
 const _getPassports = (input) => {

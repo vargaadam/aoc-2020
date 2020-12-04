@@ -1,4 +1,4 @@
-module.exports = {
+const validators = {
   byr: (value) => value >= 1920 && value <= 2002,
   iyr: (value) => value >= 2010 && value <= 2020,
   eyr: (value) => value >= 2020 && value <= 2030,
@@ -21,3 +21,24 @@ module.exports = {
     ),
   pid: (value) => value.length == 9 && !isNaN(value),
 };
+
+const passportValidator = (passports, validate) => {
+  return passports.filter((passport) => {
+    const fields = passport.split(" ");
+    let included = 0;
+
+    fields.forEach((field) => {
+      const [key, value] = field.split(":");
+
+      const isValid = validate(key, value, validators);
+
+      if (isValid) {
+        included++;
+      }
+    });
+
+    return included === Object.keys(validators).length;
+  });
+};
+
+module.exports = passportValidator;
