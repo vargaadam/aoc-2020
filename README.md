@@ -6,7 +6,7 @@
 
 ### To get the days results:
 
-`npm start`
+`npm run start`
 
 options:
 
@@ -17,3 +17,4 @@ options:
 - [Day-1](./src/calendar/day-1)
 - [Day-2](./src/calendar/day-2)
 - [Day-3](./src/calendar/day-3)
+- [Day-4](./src/calendar/day-4)
