@@ -3,9 +3,7 @@ const passportValidator = require("./validator");
 const p1 = (input) => {
   const passports = _getPassports(input);
 
-  const validPassports = passportValidator(passports, (key, _, validators) => {
-    return Object.keys(validators).includes(key);
-  });
+  const validPassports = passportValidator(passports);
 
   return validPassports.length;
 };
@@ -13,12 +11,7 @@ const p1 = (input) => {
 const p2 = (input) => {
   const passports = _getPassports(input);
 
-  const validPassports = passportValidator(
-    passports,
-    (key, value, validators) => {
-      return Object.keys(validators).includes(key) && validators[key](value);
-    }
-  );
+  const validPassports = passportValidator(passports, true);
 
   return validPassports.length;
 };

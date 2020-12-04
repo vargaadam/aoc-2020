@@ -22,7 +22,7 @@ const validators = {
   pid: (value) => value.length == 9 && !isNaN(value),
 };
 
-const passportValidator = (passports, validate) => {
+const passportValidator = (passports, isValidateValue = false) => {
   return passports.filter((passport) => {
     const fields = passport.split(" ");
     let included = 0;
@@ -30,9 +30,14 @@ const passportValidator = (passports, validate) => {
     fields.forEach((field) => {
       const [key, value] = field.split(":");
 
-      const isValid = validate(key, value, validators);
+      let isValidKey = Object.keys(validators).includes(key);
+      let isValidValue = true;
 
-      if (isValid) {
+      if (isValidateValue && isValidKey) {
+        isValidValue = validators[key](value);
+      }
+
+      if (isValidKey && isValidValue) {
         included++;
       }
     });
