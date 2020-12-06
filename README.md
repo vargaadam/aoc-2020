@@ -19,3 +19,4 @@ options:
 - [Day-3](./src/calendar/day-3)
 - [Day-4](./src/calendar/day-4)
 - [Day-5](./src/calendar/day-5)
+- [Day-6](./src/calendar/day-6)
